@@ -1,0 +1,937 @@
+:root {
+    --papel: #dce3ee;
+    --papel-claro: #eef2f8;
+    --marino: #0d1b45;
+    --marino-profundo: #081236;
+    --marino-campo: #18295c;
+    --tinta-suave: #4d5b80;
+    --azul: #3d6bff;
+    --azul-hover: #2b57e8;
+    --azul-claro: #9db5ff;
+    --verde-claro: #7fe0be;
+    --rojo: #d14343;
+
+    --fuente-display: "Gabarito", "Segoe UI", sans-serif;
+    --fuente-texto: "Albert Sans", "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--fuente-texto);
+    font-size: 16px;
+    line-height: 1.55;
+    background-color: var(--papel);
+    color: var(--marino);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fuente-display);
+    line-height: 1.05;
+}
+
+:focus-visible {
+    outline: 3px solid var(--azul);
+    outline-offset: 2px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+
+/* ---------- Header ---------- */
+
+.nav {
+    max-width: 1180px;
+    margin: auto;
+    min-height: 80px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(13, 27, 69, 0.1);
+}
+
+.logo {
+    color: var(--marino);
+    text-decoration: none;
+    font-family: var(--fuente-display);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.logo span {
+    color: var(--azul);
+}
+
+.menu {
+    display: flex;
+    gap: 32px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--tinta-suave);
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: var(--marino);
+}
+
+.btn-header {
+    background-color: var(--marino);
+    color: white;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-family: var(--fuente-display);
+    font-weight: 600;
+}
+
+.btn-header:hover {
+    background-color: var(--marino-profundo);
+}
+
+
+/* ---------- Hero ---------- */
+
+.hero {
+    padding: 64px 24px 96px;
+}
+
+.hero-contenido {
+    max-width: 1180px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(13, 27, 69, 0.22);
+    border-radius: 999px;
+    color: var(--tinta-suave);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.hero-texto h1 {
+    margin: 24px 0;
+    max-width: 10ch;
+    font-size: clamp(48px, 6.4vw, 84px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+}
+
+.hero-descripcion {
+    max-width: 40ch;
+    margin: 0;
+    color: var(--tinta-suave);
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+    font-weight: 500;
+}
+
+.check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-color: var(--marino);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+
+/* ---------- Tarjeta del simulador (pieza principal, azul marino) ---------- */
+
+.simulador {
+    color-scheme: dark;
+    background-color: var(--marino);
+    color: white;
+    padding: 32px;
+    border-radius: 28px;
+    box-shadow: 0 40px 70px -30px rgba(8, 18, 54, 0.6);
+    scroll-margin-top: 20px;
+}
+
+.simulador :focus-visible {
+    outline-color: var(--azul-claro);
+}
+
+.pasos-indicador {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+}
+
+.pasos-indicador li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pasos-indicador li span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-family: var(--fuente-display);
+    font-size: 12px;
+}
+
+.pasos-indicador li.activo {
+    color: white;
+    border-color: var(--azul-claro);
+}
+
+.pasos-indicador li.activo span {
+    background-color: white;
+    color: var(--marino);
+}
+
+.pasos-indicador li.completado {
+    color: var(--verde-claro);
+    border-color: rgba(127, 224, 190, 0.4);
+}
+
+.simulador-header h2 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.simulador-header p {
+    margin: 0 0 28px;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.estado-carga {
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.estado-carga p {
+    margin: 0;
+}
+
+.estado-carga .btn-secundario {
+    margin-top: 14px;
+}
+
+.campo {
+    margin-bottom: 28px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+
+.campo-titulo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-titulo label {
+    margin-bottom: 2px;
+}
+
+#montoSeleccionado {
+    font-family: var(--fuente-display);
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+}
+
+#monto {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    margin: 18px 0 0;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+}
+
+#monto::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border: 6px solid var(--azul);
+    border-radius: 50%;
+    background-color: white;
+}
+
+#monto::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 6px solid var(--azul);
+    border-radius: 50%;
+    background-color: white;
+}
+
+#monto::-moz-range-progress {
+    height: 6px;
+    border-radius: 999px;
+    background-color: var(--azul);
+}
+
+.limites {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.opciones-cuotas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+}
+
+.btn-cuota {
+    border: 0;
+    background-color: transparent;
+    padding: 12px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: var(--fuente-display);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cuota:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.btn-cuota.activo {
+    background-color: white;
+    color: var(--marino);
+}
+
+.resultado {
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.resultado-fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 8px 0;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.resultado-fila strong {
+    color: white;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.resultado-destacado {
+    margin: 14px 0;
+    padding: 18px 20px;
+    background-color: var(--azul);
+    border-radius: 18px;
+}
+
+.resultado-destacado span,
+.resultado-destacado small {
+    display: block;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.resultado-destacado strong {
+    display: block;
+    margin: 2px 0;
+    font-family: var(--fuente-display);
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.resultado-destacado small {
+    font-size: 13px;
+}
+
+.resultado-fila.total {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.resultado-fila.total strong {
+    font-family: var(--fuente-display);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* ---------- Botones ---------- */
+
+.btn-principal {
+    width: 100%;
+    margin-top: 20px;
+    border: 0;
+    background-color: var(--azul);
+    color: white;
+    padding: 17px;
+    border-radius: 14px;
+    font-family: var(--fuente-display);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-principal:hover {
+    background-color: var(--azul-hover);
+}
+
+.btn-secundario {
+    display: inline-block;
+    border: 1px solid rgba(13, 27, 69, 0.25);
+    background-color: transparent;
+    color: var(--marino);
+    padding: 15px 22px;
+    border-radius: 14px;
+    font-family: var(--fuente-display);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-secundario:hover {
+    border-color: var(--marino);
+}
+
+.simulador .btn-secundario {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+.simulador .btn-secundario:hover {
+    border-color: white;
+}
+
+.btn-peligro {
+    border: 1px solid rgba(209, 67, 67, 0.4);
+    background-color: transparent;
+    color: var(--rojo);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-peligro:hover {
+    background-color: rgba(209, 67, 67, 0.08);
+}
+
+.btn-texto {
+    border: 0;
+    background: none;
+    padding: 4px 0;
+    color: var(--azul);
+    font-family: var(--fuente-display);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-texto.peligro {
+    color: var(--rojo);
+}
+
+.btn-texto:hover {
+    text-decoration: underline;
+}
+
+.acciones-paso {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.acciones-paso .btn-principal {
+    margin-top: 0;
+}
+
+.aclaracion {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    font-size: 12px;
+}
+
+
+/* ---------- Formulario ---------- */
+
+.campo-form {
+    margin-bottom: 14px;
+}
+
+.campo-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.campo-form input,
+.campo-form select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background-color: var(--marino-campo);
+    color: white;
+    font: inherit;
+}
+
+.campo-form input:focus,
+.campo-form select:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(61, 107, 255, 0.4);
+}
+
+.campo-form .invalido {
+    border-color: #ff8a8a;
+}
+
+.error {
+    display: block;
+    min-height: 18px;
+    margin-top: 4px;
+    color: #ff9c9c;
+    font-size: 13px;
+}
+
+.fila-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+
+/* ---------- Resumen ---------- */
+
+.detalle-resumen {
+    margin: 0;
+    padding: 6px 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+}
+
+.detalle-resumen div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detalle-resumen div:last-child {
+    border-bottom: 0;
+}
+
+.detalle-resumen dt {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.detalle-resumen dd {
+    margin: 0;
+    text-align: right;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.detalle-resumen div:last-child dd {
+    font-family: var(--fuente-display);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.capacidad-pago {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background-color: rgba(127, 224, 190, 0.12);
+    color: var(--verde-claro);
+    font-size: 14px;
+}
+
+
+/* ---------- Cómo funciona ---------- */
+
+.como-funciona {
+    max-width: 1180px;
+    margin: auto;
+    padding: 96px 24px;
+}
+
+.seccion-titulo {
+    max-width: 560px;
+    margin-bottom: 48px;
+}
+
+.seccion-titulo h2 {
+    margin: 0 0 12px;
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.seccion-titulo p {
+    margin: 0;
+    color: var(--tinta-suave);
+    font-size: 18px;
+}
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.paso {
+    padding-top: 20px;
+    border-top: 2px solid var(--marino);
+}
+
+.numero-paso {
+    color: var(--azul);
+    font-family: var(--fuente-display);
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.paso h3 {
+    margin: 18px 0 8px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.paso p {
+    margin: 0;
+    max-width: 32ch;
+    color: var(--tinta-suave);
+}
+
+
+/* ---------- Mis solicitudes ---------- */
+
+.solicitudes {
+    max-width: 1180px;
+    margin: auto;
+    padding: 0 24px 96px;
+}
+
+.solicitudes-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.solicitudes-header h2 {
+    margin: 0;
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.solicitudes-totales {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.solicitudes-totales div {
+    padding: 22px 24px;
+    background-color: var(--papel-claro);
+    border-radius: 20px;
+}
+
+.solicitudes-totales span {
+    display: block;
+    color: var(--tinta-suave);
+}
+
+.solicitudes-totales strong {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--fuente-display);
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.lista-solicitudes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.tarjeta-solicitud {
+    padding: 22px 24px;
+    background-color: #f6f8fc;
+    border: 1px solid rgba(13, 27, 69, 0.08);
+    border-radius: 20px;
+}
+
+.tarjeta-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.tarjeta-numero {
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    color: var(--tinta-suave);
+}
+
+.estado {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.estado-revision {
+    background-color: #fff1d6;
+    color: #8a5a00;
+}
+
+.estado-cancelada {
+    background-color: rgba(13, 27, 69, 0.08);
+    color: var(--tinta-suave);
+}
+
+.tarjeta-monto {
+    margin: 14px 0 4px;
+    font-family: var(--fuente-display);
+    font-size: 20px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.tarjeta-detalle {
+    margin: 0;
+    color: var(--tinta-suave);
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-acciones {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(13, 27, 69, 0.08);
+}
+
+.sin-solicitudes {
+    padding: 44px 24px;
+    background-color: var(--papel-claro);
+    border: 1.5px dashed rgba(13, 27, 69, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    color: var(--tinta-suave);
+}
+
+.sin-solicitudes p {
+    margin: 12px 0 18px;
+}
+
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 40px 24px;
+    background-color: var(--marino-profundo);
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.logo-footer {
+    color: white;
+}
+
+.logo-footer span {
+    color: var(--azul-claro);
+}
+
+footer p {
+    margin: 10px 0 0;
+    font-size: 14px;
+}
+
+
+/* ---------- SweetAlert con la identidad de la app ---------- */
+
+.swal2-popup {
+    border-radius: 24px;
+    font-family: var(--fuente-texto);
+    color: var(--marino);
+}
+
+.swal2-title {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    color: var(--marino);
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: var(--azul);
+    border-radius: 12px;
+    font-family: var(--fuente-display);
+    font-weight: 600;
+}
+
+.swal2-styled.swal2-cancel {
+    background-color: var(--marino);
+    border-radius: 12px;
+    font-family: var(--fuente-display);
+    font-weight: 600;
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+
+    .menu {
+        display: none;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .simulador {
+        max-width: 560px;
+    }
+
+    .pasos {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .btn-header {
+        display: none;
+    }
+
+    .hero {
+        padding: 40px 16px 64px;
+    }
+
+    .simulador {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    #montoSeleccionado {
+        font-size: 44px;
+    }
+
+    .opciones-cuotas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fila-form,
+    .solicitudes-totales {
+        grid-template-columns: 1fr;
+    }
+
+    .solicitudes-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .lista-solicitudes {
+        grid-template-columns: 1fr;
+    }
+
+    .como-funciona,
+    .solicitudes {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+}

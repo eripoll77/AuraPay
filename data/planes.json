@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "nombre": "Plan 3 cuotas",
+        "cuotas": 3,
+        "tna": 1.20,
+        "montoMinimo": 100000,
+        "montoMaximo": 1000000
+    },
+    {
+        "id": 2,
+        "nombre": "Plan 6 cuotas",
+        "cuotas": 6,
+        "tna": 1.20,
+        "montoMinimo": 100000,
+        "montoMaximo": 1000000
+    },
+    {
+        "id": 3,
+        "nombre": "Plan 9 cuotas",
+        "cuotas": 9,
+        "tna": 1.20,
+        "montoMinimo": 200000,
+        "montoMaximo": 1000000
+    },
+    {
+        "id": 4,
+        "nombre": "Plan 12 cuotas",
+        "cuotas": 12,
+        "tna": 1.20,
+        "montoMinimo": 200000,
+        "montoMaximo": 1000000
+    }
+]

@@ -1,0 +1,9 @@
+[
+    { "id": 1, "nombre": "Viajes y vacaciones" },
+    { "id": 2, "nombre": "Refacción del hogar" },
+    { "id": 3, "nombre": "Compra de vehículo" },
+    { "id": 4, "nombre": "Estudios y capacitación" },
+    { "id": 5, "nombre": "Salud" },
+    { "id": 6, "nombre": "Cancelar otras deudas" },
+    { "id": 7, "nombre": "Otro" }
+]

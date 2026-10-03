@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AURAPAY | Préstamos personales</title>
+
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Gabarito:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/simulador.js" defer></script>
+    <script src="./js/storage.js" defer></script>
+    <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="nav">
+
+            <a href="#inicio" class="logo">
+                AURA<span>PAY</span>
+            </a>
+
+            <nav class="menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#solicitudes">Mis solicitudes</a>
+            </nav>
+
+            <a href="#simulador" class="btn-header">
+                Simulá ahora
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-contenido">
+
+                <div class="hero-texto">
+
+                    <span class="etiqueta">
+                        Préstamos personales 100% online
+                    </span>
+
+                    <h1>Tu préstamo, más simple.</h1>
+
+                    <p class="hero-descripcion">
+                        Simulá tu préstamo en segundos, elegí el monto
+                        y las cuotas que mejor se adapten a vos.
+                    </p>
+
+                    <div class="beneficios">
+                        <div><span class="check">✓</span>100% online</div>
+                        <div><span class="check">✓</span>Simulación inmediata</div>
+                        <div><span class="check">✓</span>Elegí tus cuotas</div>
+                    </div>
+
+                </div>
+
+
+                <div class="simulador" id="simulador">
+
+                    <ol class="pasos-indicador" id="pasosIndicador">
+                        <li data-paso="simulacion" class="activo"><span>1</span>Simulá</li>
+                        <li data-paso="datos"><span>2</span>Tus datos</li>
+                        <li data-paso="resumen"><span>3</span>Confirmá</li>
+                    </ol>
+
+
+                    <div id="estadoCarga" class="estado-carga">
+                        <p id="mensajeCarga">Cargando planes disponibles...</p>
+                        <button id="btnReintentar" class="btn-secundario oculto" type="button">
+                            Reintentar
+                        </button>
+                    </div>
+
+
+                    <!-- Paso 1: simulación -->
+                    <div id="pasoSimulacion" class="panel-paso oculto">
+
+                        <div class="simulador-header">
+                            <h2>Calculá tu préstamo</h2>
+                            <p>Elegí cuánto necesitás y en cuántas cuotas querés devolverlo.</p>
+                        </div>
+
+                        <div class="campo">
+
+                            <div class="campo-titulo">
+                                <label for="monto">¿Cuánto necesitás?</label>
+                                <span id="montoSeleccionado">$500.000</span>
+                            </div>
+
+                            <input type="range" id="monto" min="100000" max="1000000" step="50000" value="500000">
+
+                            <div class="limites">
+                                <span>$100.000</span>
+                                <span>$1.000.000</span>
+                            </div>
+
+                        </div>
+
+                        <div class="campo">
+                            <label>Elegí la cantidad de cuotas</label>
+                            <div id="opcionesCuotas" class="opciones-cuotas"></div>
+                        </div>
+
+                        <div class="resultado">
+
+                            <div class="resultado-fila">
+                                <span>Monto solicitado</span>
+                                <strong id="resumenMonto">$0</strong>
+                            </div>
+
+                            <div class="resultado-fila">
+                                <span>Cantidad de cuotas</span>
+                                <strong id="resumenCuotas">-</strong>
+                            </div>
+
+                            <div class="resultado-fila">
+                                <span>Intereses</span>
+                                <strong id="resumenIntereses">$0</strong>
+                            </div>
+
+                            <div class="resultado-fila">
+                                <span>Tasa</span>
+                                <strong id="resumenTasa">-</strong>
+                            </div>
+
+                            <div class="resultado-destacado">
+                                <span>Cuota estimada</span>
+                                <strong id="cuotaEstimada">$0</strong>
+                                <small>Valor estimativo de cada cuota</small>
+                            </div>
+
+                            <div class="resultado-fila total">
+                                <span>Total estimado</span>
+                                <strong id="totalEstimado">$0</strong>
+                            </div>
+
+                        </div>
+
+                        <button id="btnContinuar" class="btn-principal" type="button">
+                            Continuar solicitud
+                        </button>
+
+                        <p class="aclaracion">
+                            Esta simulación es orientativa y no implica aprobación de una solicitud.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Paso 2: datos del solicitante -->
+                    <form id="pasoDatos" class="panel-paso oculto" novalidate>
+
+                        <div class="simulador-header">
+                            <h2>Completá tus datos</h2>
+                            <p>Los usamos para evaluar tu solicitud. Se guardan mientras completás.</p>
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="nombre">Nombre y apellido</label>
+                            <input type="text" id="nombre" name="nombre" autocomplete="name">
+                            <small class="error" data-error="nombre"></small>
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email">
+                            <small class="error" data-error="email"></small>
+                        </div>
+
+                        <div class="fila-form">
+
+                            <div class="campo-form">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+                                <small class="error" data-error="telefono"></small>
+                            </div>
+
+                            <div class="campo-form">
+                                <label for="ingresos">Ingresos mensuales</label>
+                                <input type="number" id="ingresos" name="ingresos" min="0" step="1000">
+                                <small class="error" data-error="ingresos"></small>
+                            </div>
+
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="motivo">¿Para qué lo vas a usar?</label>
+                            <select id="motivo" name="motivo">
+                                <option value="">Seleccioná un motivo</option>
+                            </select>
+                            <small class="error" data-error="motivo"></small>
+                        </div>
+
+                        <div class="acciones-paso">
+                            <button type="button" class="btn-secundario" data-ir-a="simulacion">
+                                Volver
+                            </button>
+                            <button type="submit" class="btn-principal">
+                                Revisar solicitud
+                            </button>
+                        </div>
+
+                    </form>
+
+
+                    <!-- Paso 3: resumen y confirmación -->
+                    <div id="pasoResumen" class="panel-paso oculto">
+
+                        <div class="simulador-header">
+                            <h2>Revisá y confirmá</h2>
+                            <p>Verificá que todo esté correcto antes de enviar.</p>
+                        </div>
+
+                        <dl id="detalleResumen" class="detalle-resumen"></dl>
+
+                        <div id="capacidadPago" class="capacidad-pago"></div>
+
+                        <div class="acciones-paso">
+                            <button type="button" class="btn-secundario" data-ir-a="datos">
+                                Editar datos
+                            </button>
+                            <button type="button" id="btnConfirmar" class="btn-principal">
+                                Confirmar solicitud
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="como-funciona" id="como-funciona">
+
+            <div class="seccion-titulo">
+                <h2>¿Cómo funciona?</h2>
+                <p>Completá el proceso en pocos pasos, sin trámites innecesarios.</p>
+            </div>
+
+            <div class="pasos">
+
+                <article class="paso">
+                    <div class="numero-paso">01</div>
+                    <h3>Simulá</h3>
+                    <p>Elegí el monto que necesitás y la cantidad de cuotas.</p>
+                </article>
+
+                <article class="paso">
+                    <div class="numero-paso">02</div>
+                    <h3>Completá tus datos</h3>
+                    <p>Ingresá la información necesaria para realizar tu solicitud.</p>
+                </article>
+
+                <article class="paso">
+                    <div class="numero-paso">03</div>
+                    <h3>Enviá tu solicitud</h3>
+                    <p>Revisá el resumen y confirmá el envío de tu solicitud.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="solicitudes" id="solicitudes">
+
+            <div class="solicitudes-header">
+
+                <h2>Mis solicitudes</h2>
+
+                <button id="btnVaciar" class="btn-peligro" type="button">
+                    Vaciar historial
+                </button>
+
+            </div>
+
+            <div class="solicitudes-totales">
+
+                <div>
+                    <span>Solicitudes en revisión</span>
+                    <strong id="cantidadEnRevision">0</strong>
+                </div>
+
+                <div>
+                    <span>Total solicitado en revisión</span>
+                    <strong id="totalEnRevision">$0</strong>
+                </div>
+
+            </div>
+
+            <div id="listaSolicitudes" class="lista-solicitudes"></div>
+
+            <div id="sinSolicitudes" class="sin-solicitudes oculto">
+                <img src="./assets/img/sin-solicitudes.svg" alt="" width="160" height="120">
+                <p>Todavía no enviaste ninguna solicitud.</p>
+                <a href="#simulador" class="btn-secundario">Simular un préstamo</a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <a href="#inicio" class="logo logo-footer">
+            AURA<span>PAY</span>
+        </a>
+
+        <p>Proyecto educativo de simulación financiera.</p>
+
+    </footer>
+
+</body>
+
+</html>
