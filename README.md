@@ -1,6 +1,10 @@
 # AURAPAY — Simulador de préstamos personales
 
-Proyecto final del curso de JavaScript. Es un simulador web que cubre el circuito completo de una solicitud de préstamo personal:
+Proyecto final del curso de JavaScript. Es un simulador web que cubre el circuito completo de una solicitud de préstamo personal.
+
+**Probalo online:** https://eripoll77.github.io/AuraPay/
+
+## Cómo funciona
 
 1. **Simulá**: elegí el monto con el slider y la cantidad de cuotas. Los planes disponibles dependen del monto.
 2. **Tus datos**: completá el formulario (con validación en pantalla). Se guarda automáticamente como borrador.
