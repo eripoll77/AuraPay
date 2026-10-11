@@ -20,8 +20,6 @@ function escribirStorage(clave, valor) {
 }
 
 
-// Borrador: se guarda y se modifica a medida que el usuario avanza.
-
 function obtenerBorrador() {
 
     return leerStorage(CLAVE_BORRADOR, null);
@@ -44,8 +42,6 @@ function borrarBorrador() {
 
 }
 
-
-// Historial de solicitudes confirmadas.
 
 function obtenerSolicitudes() {
 
