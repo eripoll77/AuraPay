@@ -1,5 +1,3 @@
-// Interfaz del simulador: carga de datos, navegación entre pasos e historial.
-
 let planes = [];
 let motivos = [];
 let planSeleccionado = null;
@@ -52,8 +50,6 @@ const toast = Swal.mixin({
     timerProgressBar: true
 });
 
-
-// ---------- Carga de datos ----------
 
 async function cargarDatos() {
 
@@ -149,8 +145,6 @@ function restaurarBorrador() {
 }
 
 
-// ---------- Navegación entre pasos ----------
-
 function mostrarPaso(pasoActual) {
 
     const indicePasoActual = ORDEN_PASOS.indexOf(pasoActual);
@@ -171,8 +165,6 @@ function mostrarPaso(pasoActual) {
 
 }
 
-
-// ---------- Paso 1: simulación ----------
 
 function actualizarSimulador() {
 
@@ -284,8 +276,6 @@ function continuarSolicitud() {
 }
 
 
-// ---------- Paso 2: datos del solicitante ----------
-
 function obtenerDatosFormulario() {
 
     return Object.fromEntries(new FormData(pasoDatos));
@@ -360,8 +350,6 @@ async function revisarSolicitud(evento) {
 
 }
 
-
-// ---------- Paso 3: resumen y confirmación ----------
 
 function renderizarResumen() {
 
@@ -472,8 +460,6 @@ function reiniciarSimulador() {
 
 }
 
-
-// ---------- Historial de solicitudes ----------
 
 function renderizarSolicitudes() {
 
@@ -604,9 +590,6 @@ async function vaciarHistorial() {
     }
 
 }
-
-
-// ---------- Eventos ----------
 
 montoInput.addEventListener("input", actualizarSimulador);
 btnContinuar.addEventListener("click", continuarSolicitud);

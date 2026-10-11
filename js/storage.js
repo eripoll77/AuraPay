@@ -1,5 +1,3 @@
-// Persistencia en localStorage: borrador de la solicitud en curso e historial de solicitudes.
-
 const CLAVE_BORRADOR = "aurapay-borrador";
 const CLAVE_SOLICITUDES = "aurapay-solicitudes";
 

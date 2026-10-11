@@ -1,9 +1,6 @@
-// Lógica de negocio del simulador: cálculos y validaciones, sin acceso al DOM.
-
 const PORCENTAJE_MAXIMO_INGRESOS = 0.4;
 const MESES_POR_ANIO = 12;
 
-// Sistema francés: cuota fija calculada sobre la tasa mensual (TNA / 12).
 function calcularPrestamo(monto, plan) {
 
     const { tna, cuotas } = plan;
